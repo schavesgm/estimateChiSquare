@@ -88,7 +88,7 @@ def fitOnceNM( f, initGuess, xData, yData, chiSqDef = None, moreDim = None,
 
     for i in range( N ):
         newPoint = cp.copy(initGuess) + initGuess * np.random.random(N)
-        imNewPoint= chiSqDef(f,newPoint,xData,yData,yError)
+        imNewPoint= chiCall()
         imValues.append([newPoint, imNewPoint])
 
     ### Simplex iteration

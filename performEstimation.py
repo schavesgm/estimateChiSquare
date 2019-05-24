@@ -25,7 +25,7 @@ def elimData( oldArr, posElim ):
     return np.array( newArr )
 
 def estimateNewPoints( omega, dOmega, xData, yData, yError, mData, lims,
-                       defChSq, numIter = 75, numPoints = 100 ):
+                       defChSq, numIter = 75, numPoints = 100, constError = 0.2 ):
     '''
         @arg omega (array) : Array containing the fitted parameters calculated
                              with the N-1 previous points.
@@ -53,6 +53,11 @@ def estimateNewPoints( omega, dOmega, xData, yData, yError, mData, lims,
                              lim[0] and lim[1]. They are linearly distributed between
                              these points. Note that some of them are removed as
                              degenerate values are not accepted.
+        @constError (float): Constrain the error for the ith element to generate
+                             points closer to the 'true' fitted values omega. It
+                             is needed to get convergence inside the file
+                             solveEOS.py, where we need to find the roots of an
+                             equation.
 
         return             : The program returns three different arrays. The first
                              one corresponds to the mean of chiSquares for each
@@ -94,7 +99,7 @@ def estimateNewPoints( omega, dOmega, xData, yData, yError, mData, lims,
 
             # Generate new parameter data according to the errors
             omegaNew = [ omega[i] + \
-                         0.25 * np.random.rand() * dOmega[i] * \
+                         constError * np.random.rand() * dOmega[i] * \
                          heav( np.random.rand() ) \
                          for i in range( len( omega ) ) ]
 

@@ -1,3 +1,6 @@
 EoS
 EoS.tar.gz
 __pycache__
+data
+.temp.file
+save*

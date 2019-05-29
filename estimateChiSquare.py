@@ -8,8 +8,6 @@ import performEstimation as pfe
 
 def main():
 
-    # numPoints = 10
-
     # Load the data from outside
     nameFile = sys.argv[1]
 
@@ -27,8 +25,8 @@ def main():
                        yData ** omega[2] + omega[3] * yData ** omega[4]
                        - mData ) / yE ) ** 2 / len( omega )
 
-    inOmega = np.array( [ 2.9449, 0.2580, 1.0226, 6.7638, 3.6188 ] )
-    stOmega = np.array( [ 0.4071, 0.0078, 0.0551, 14.9842, 1.4461 ] )
+    inOmega = np.loadtxt( '.temp.file' )[0,:]
+    stOmega = np.loadtxt( '.temp.file' )[1,:]
 
     # Space to explore
     lims = [ 0.2, 0.6 ]
@@ -37,7 +35,7 @@ def main():
                                                     yData, yErro, mData,
                                                     lims, chiSquare )
 
-    [ print( meanChi[i], '+-', stdeChi[i] ) for i in range( len( meanChi ) ) ]
+    # [ print( meanChi[i], '+-', stdeChi[i] ) for i in range( len( meanChi ) ) ]
 
     # Get the maximum value
     argMax = np.argmax( meanChi )

@@ -118,7 +118,7 @@ def estimateNewPoints( omega, dOmega, xData, yData, yError, mData, lims,
             xData = xData[:-1]
 
         meanChiSquare[indX] = np.mean( storeX )
-        stdeChiSquare[indX] = np.std( storeX )
+        stdeChiSquare[indX] = np.std( storeX ) / np.sqrt( numIter )
 
         indX += 1
 

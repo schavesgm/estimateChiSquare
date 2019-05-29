@@ -3,7 +3,7 @@
 # Parameters of the calculation
 
 # Value of the third dimension - Domain wall
-Lsize=8
+Lsize=48
 # Value of the other two dimensions
 nSize=12
 # Limits to fit the data

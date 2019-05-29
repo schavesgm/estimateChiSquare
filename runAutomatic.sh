@@ -4,7 +4,7 @@
 
 # Value of the third dimension - Domain wall
 Lsize=48
-# Value of the other two dimensions
+# Value of the other dimensions
 nSize=12
 # Limits to fit the data
 lims=( 0.2 0.6 )

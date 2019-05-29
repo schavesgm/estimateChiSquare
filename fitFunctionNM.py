@@ -44,16 +44,34 @@ def fitOnceNM( f, initGuess, xData, yData, chiSqDef = None, moreDim = None,
                yError = 0, seed = 1231523, maxIter = 1e6, getChiSquare = 0,
                 ):
     '''
-        @arg f (function) : function that we would like to optimize. This function
-                            must return a double and be able to get numpy arrays
-                            as input
+        @arg f (function)   : function that we would like to optimize. This function
+                              must return a double and be able to get numpy arrays
+                              as input.
+        @initGuess (array)  : array with the initial guess of the points that
+                              minimize the function.
+        @xData (array)      : Array containing the data corresponding to the
+                              first dimension in the function f(x,y,z...).
+        @yData (array)      : Experimental data to fit corresponding to the
+                              function f(x,y,z...).
 
-        @initGuess (array): array with the initial guess of the points that
-                            minimize the function
-        @maxIter (int)    : integer with the maximum number of iterations that
-                            we accept
+        Optionals:
+        @chiSqDef (funciton): Function that defines the chiSquare for your problem.
+                              In case it is None, you will use the ones defined in
+                              the function chiSquare in this package.getChiSquare
+        @moreDim (array)    : More dimension in the function f(x,y,z).
+        @yError (array)     : Error associated to the experimental values. If set
+                              to zero and chiSqDef is None, we will use the error
+                              function.
+        @seed (int)         : Seed used in the calculation for random data.
+        @maxIter (int)      : Maximum number of iterations calculated in the
+                              Nelder-Mead/Amoeba algorithm.
+        @getChiSquare (int) : If set to zero, chiSquare is not returned at the final
+                              convergence of the algorithm.
+
         return: tuple     : tuple( Points that minimize the function, minimum
-                            value achieved)
+                            value achieved). If getChiSquare is 1, then it returns
+                            an array with 2 dimensions, the second one is the
+                            chiSquare.
     '''
 
     # Set the chiSquare definition used
